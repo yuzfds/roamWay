@@ -14,7 +14,9 @@ import android.widget.Toast;
 
 import com.example.yuzf.roamway.R;
 
-
+/**
+ * 主页
+ */
 public class MainActivity extends AppCompatActivity {
 
     private DrawerLayout mDrawerLayout;
