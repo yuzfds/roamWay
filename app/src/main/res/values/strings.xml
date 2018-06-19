@@ -1,3 +1,5 @@
 <resources>
     <string name="app_name">roamWay</string>
+    <string name="open" />
+    <string name="close" />
 </resources>
