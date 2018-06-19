@@ -19,7 +19,6 @@
         android:background="?attr/colorPrimary"
         app:menu="@menu/left_menu"
         android:layout_gravity= "start"
-        app:headerLayout="@layout/headlayout"
         android:fitsSystemWindows="true"
         />
 

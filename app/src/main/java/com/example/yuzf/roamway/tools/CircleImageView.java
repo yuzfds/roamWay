@@ -5,6 +5,7 @@ package com.example.yuzf.roamway.tools;
  * Class Note:
  */
 
+import android.annotation.SuppressLint;
 import android.content.Context;
 import android.graphics.Bitmap;
 import android.graphics.Bitmap.Config;
@@ -23,6 +24,7 @@ import android.widget.ImageView;
  * @author caizhiming
  *
  */
+@SuppressLint("AppCompatCustomView")
 public class CircleImageView extends ImageView{
 
     private Paint paint ;

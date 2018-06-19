@@ -1,5 +1,6 @@
 package com.example.yuzf.roamway.view;
 
+import android.content.Intent;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.design.widget.NavigationView;
@@ -8,22 +9,25 @@ import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
+import android.text.Layout;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.TextView;
 import android.widget.Toast;
-
 import com.example.yuzf.roamway.R;
+import com.example.yuzf.roamway.tools.CircleImageView;
 
 /**
  * 主页
  */
-public class MainActivity extends AppCompatActivity {
+public class MainActivity extends AppCompatActivity implements View.OnClickListener{
 
     private DrawerLayout mDrawerLayout;
     private Toolbar mToolbar;
     private ActionBarDrawerToggle mDrawerToggle;
     private NavigationView mNavigationView;
-
+    private CircleImageView mimage;
+    private View headlayout;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -67,6 +71,9 @@ public class MainActivity extends AppCompatActivity {
         mToolbar = findViewById(R.id.toolbar);
         setSupportActionBar(mToolbar);
         mNavigationView = findViewById(R.id.nav_view);
+        headlayout =mNavigationView.inflateHeaderView(R.layout.headlayout);
+        mimage = headlayout.findViewById(R.id.timage);
+        mimage.setOnClickListener(this);
         mDrawerLayout = findViewById(R.id.drawer_layout);
         mDrawerToggle = new ActionBarDrawerToggle(this,mDrawerLayout,mToolbar,R.string.open,R.string.close) {
             @Override
@@ -86,6 +93,16 @@ public class MainActivity extends AppCompatActivity {
     private void updateItemCheckedView(){  //当点击侧滑栏选项时，将其余
         for(int i = 0; i < 3; i ++){     // 选项设置成未选中
             mNavigationView.getMenu().getItem(i).setChecked(false);
+        }
+    }
+
+    @Override
+    public void onClick(View v) {
+        switch (v.getId()) {
+            case R.id.timage:
+                Intent intent = new Intent(MainActivity.this,LoginActivity.class);
+                startActivity(intent);
+                break;
         }
     }
 }
