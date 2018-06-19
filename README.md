@@ -1,2 +1,2 @@
 # roamWay
-an app about travel
+一个新闻app
