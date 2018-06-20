@@ -11,29 +11,29 @@ import android.os.Bundle;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.animation.AccelerateDecelerateInterpolator;
+import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.example.yuzf.roamway.R;
+import com.example.yuzf.roamway.model.LoginListener;
+import com.example.yuzf.roamway.model.UserModelImpl;
+import com.example.yuzf.roamway.presenter.IUserPresenterImpl;
+import com.example.yuzf.roamway.presenter.IUserPreseter;
 import com.example.yuzf.roamway.tools.JellyInterpolator;
 
 
-public class LoginActivity extends AppCompatActivity implements View.OnClickListener {
-
+public class LoginActivity extends AppCompatActivity implements View.OnClickListener ,IUserView{
     private TextView mBtnLogin;
-
     private View progress;
-
     private View mInputLayout;
-
     private float mWidth, mHeight;
-
     private ImageView backtomain;
-
     private TextView register;
-
     private LinearLayout mName, mPsw;
+    private EditText username ,password;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -47,6 +47,8 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
         mInputLayout = findViewById(R.id.input_layout);
         mName = (LinearLayout) findViewById(R.id.input_layout_name);
         mPsw = (LinearLayout) findViewById(R.id.input_layout_psw);
+        username = findViewById(R.id.username);
+        password = findViewById(R.id.password);
         backtomain = findViewById(R.id.backToMain);
         register = findViewById(R.id.register);
         backtomain.setOnClickListener(this);
@@ -66,6 +68,8 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
                 mName.setVisibility(View.INVISIBLE);
                 mPsw.setVisibility(View.INVISIBLE);
                 inputAnimator(mInputLayout, mWidth, mHeight);
+                IUserPreseter preseter = new IUserPresenterImpl();
+                preseter.login(new UserModelImpl(),this);
                 break;
             case R.id.backToMain:
                 intent =new Intent(LoginActivity.this,MainActivity.class);
@@ -123,7 +127,6 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
                 progress.setVisibility(View.VISIBLE);
                 progressAnimator(progress);
                 mInputLayout.setVisibility(View.INVISIBLE);
-
             }
 
             @Override
@@ -145,4 +148,33 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
         animator3.start();
 
     }
+
+    @Override
+    public String getMail() {
+        return username.getText().toString();
+    }
+
+    @Override
+    public String getPassword() {
+        return password.getText().toString();
+    }
+
+    @Override
+    public String getName() {
+        return null;
+    }
+
+    @Override
+    public void jumpActivity(String name) {
+        Intent intent = new Intent(LoginActivity.this,MainActivity.class);
+        intent.putExtra("username",name);
+        finish();
+        startActivity(intent);
+    }
+
+    @Override
+    public void showError(String error) {
+        Toast.makeText(LoginActivity.this, error, Toast.LENGTH_SHORT).show();
+    }
+
 }

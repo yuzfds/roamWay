@@ -22,7 +22,7 @@
             android:src="@drawable/beforelogin"/>
 
         <TextView
-            android:id="@+id/login_alert"
+            android:id="@+id/mname"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:padding="5dp"

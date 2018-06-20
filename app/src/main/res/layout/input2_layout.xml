@@ -24,6 +24,7 @@
                 android:layout_height="wrap_content"
                 android:src="@drawable/paw_me"/>
             <EditText
+                android:id="@+id/reg_username"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="10dp"
@@ -51,6 +52,7 @@
                 android:src="@drawable/paw_code"/>
 
             <EditText
+                android:id="@+id/reg_mail"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="10dp"
@@ -79,6 +81,7 @@
                 android:src="@drawable/paw_left" />
 
             <EditText
+                android:id="@+id/reg_password"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="10dp"
@@ -107,6 +110,7 @@
                 android:src="@drawable/paw_left" />
 
             <EditText
+                android:id="@+id/ref_qrpassword"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="10dp"
